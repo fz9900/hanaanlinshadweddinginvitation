@@ -8,12 +8,23 @@
   <meta name="description"
     content="Wedding Invitation of Hanaan & Linshad. 30 December 2026, 12:00 PM at Majestic Ceremonials Convention Centre, Thrissur.">
 
+  <!-- Mobile & Performance Meta Tags -->
+  <meta name="theme-color" content="#FAF7F2">
+  <meta name="color-scheme" content="light">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+
   <!-- Open Graph / Social Sharing -->
   <meta property="og:title" content="Hanaan & Linshad — Wedding Invitation">
   <meta property="og:description"
     content="We cordially invite you to celebrate the wedding of Hanaan & Linshad on 30 December 2026 at Majestic Ceremonials Convention Centre, Thrissur.">
   <meta property="og:image" content="hero_illustration.jpg">
   <meta property="og:type" content="website">
+
+  <!-- Preload Critical Above-the-fold Hero Image -->
+  <link rel="preload" as="image" href="hero_illustration.jpg" fetchpriority="high">
 
   <!-- Favicon -->
   <link rel="icon"
@@ -1661,6 +1672,131 @@
       transform: none;
     }
 
+    /* =========================================
+   MOBILE TOUCH & RESPONSIVE ERGONOMICS
+========================================= */
+    .btn,
+    .wax-seal-btn,
+    .mus,
+    .cal-btn,
+    .dance-stage {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .rail {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 56px 16px;
+      }
+
+      .wrap {
+        padding: 0 4px;
+      }
+
+      .main-invitation-card {
+        padding: 46px 18px 38px;
+        border-radius: 28px;
+      }
+
+      .main-invitation-card::before {
+        inset: 8px;
+        border-radius: 20px;
+      }
+
+      .venue-card {
+        padding: 38px 18px 32px;
+        border-radius: 28px;
+      }
+
+      .venue-card::before {
+        inset: 8px;
+        border-radius: 20px;
+      }
+
+      .cal {
+        width: calc(100% - 16px);
+        padding: 24px 14px 20px;
+        border-radius: 24px;
+      }
+
+      .cd {
+        gap: 8px;
+        padding: 0 6px;
+      }
+
+      .cd-box {
+        padding: 12px 2px 10px;
+        border-radius: 16px;
+      }
+
+      .cd b {
+        font-size: clamp(20px, 6vw, 26px);
+      }
+
+      .slide {
+        flex: 0 0 min(82vw, 290px);
+        padding: 26px 18px;
+      }
+
+      .gate-card {
+        padding: 38px 18px 32px;
+        border-radius: 28px;
+      }
+
+      .gate-card::before {
+        inset: 6px;
+        border-radius: 22px;
+      }
+
+      .venue-actions {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 10px;
+      }
+
+      .btn {
+        justify-content: center;
+        padding: 14px 24px;
+        font-size: 15px;
+      }
+
+      footer {
+        margin: 0 16px;
+        padding: 44px 0 68px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .cd {
+        gap: 6px;
+      }
+
+      .cd-box {
+        padding: 10px 1px 8px;
+      }
+
+      .cd b {
+        font-size: 19px;
+      }
+
+      .cd span {
+        font-size: 9.5px;
+      }
+
+      .nm {
+        font-size: 42px;
+      }
+
+      .ar {
+        font-size: 30px;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -2013,6 +2149,7 @@
         <!-- Embedded Google Map -->
         <div class="venue-map-wrap">
           <iframe
+            title="Majestic Ceremonials Convention Centre Google Maps"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.8511655146067!2d76.0904647745788!3d10.433382989695263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7f331a376e4d5%3A0xa6fc2933b6bceb2c!2sMajestic%20Ceremonials%20Convention%20Centre!5e0!3m2!1sen!2sin!4v1793954498944!5m2!1sen!2sin"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -2187,7 +2324,7 @@
   <div class="toast" id="toast">Address copied to clipboard!</div>
 
   <!-- Background Audio & Floating Music Control -->
-  <audio id="bgm" loop preload="auto"></audio>
+  <audio id="bgm" loop preload="none"></audio>
   <button class="mus" id="mus" type="button" hidden aria-pressed="false" aria-label="Play romantic wedding music">
     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
       <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
@@ -2302,19 +2439,20 @@
       }
 
       /* -----------------------------------------
-         Floating Petals & Golden Stardust Canvas
+         Floating Petals & Golden Stardust Canvas (Optimized for Mobile)
       ----------------------------------------- */
       var canvas = q('petals-canvas');
-      var ctx = canvas ? canvas.getContext('2d') : null;
+      var ctx = canvas ? canvas.getContext('2d', { alpha: true }) : null;
       var petals = [];
-      var animFrameId;
+      var animFrameId = null;
+      var isPageVisible = !document.hidden;
 
       function resizeCanvas() {
         if (!canvas) return;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       }
-      window.addEventListener('resize', resizeCanvas);
+      window.addEventListener('resize', resizeCanvas, { passive: true });
       resizeCanvas();
 
       function Petal() {
@@ -2325,15 +2463,15 @@
         if (!canvas) return;
         this.x = Math.random() * canvas.width;
         this.y = -20 - Math.random() * 40;
-        this.size = 7 + Math.random() * 10;
-        this.speedY = 0.8 + Math.random() * 1.4;
-        this.speedX = (Math.random() - 0.5) * 1.2;
+        this.size = 6 + Math.random() * 9;
+        this.speedY = 0.75 + Math.random() * 1.25;
+        this.speedX = (Math.random() - 0.5) * 1.1;
         this.rotation = Math.random() * Math.PI * 2;
-        this.rotSpeed = (Math.random() - 0.5) * 0.03;
+        this.rotSpeed = (Math.random() - 0.5) * 0.025;
         this.opacity = 0.35 + Math.random() * 0.45;
 
         var type = Math.random();
-        if (type < 0.42) {
+        if (type < 0.45) {
           this.color = 'rgba(235, 175, 165, ' + this.opacity + ')'; // soft blush petal
         } else if (type < 0.75) {
           this.color = 'rgba(245, 230, 200, ' + this.opacity + ')'; // jasmine ivory petal
@@ -2346,10 +2484,10 @@
       Petal.prototype.update = function () {
         if (!canvas) return;
         this.y += this.speedY;
-        this.x += this.speedX + Math.sin(this.y * 0.015) * 0.5;
+        this.x += this.speedX + Math.sin(this.y * 0.015) * 0.45;
         this.rotation += this.rotSpeed;
 
-        if (this.y > canvas.height + 30 || this.x < -30 || this.x > canvas.width + 30) {
+        if (this.y > canvas.height + 25 || this.x < -25 || this.x > canvas.width + 25) {
           this.reset();
         }
       };
@@ -2373,10 +2511,10 @@
       };
 
       function startPetals() {
-        if (!canvas || !ctx) return;
+        if (!canvas || !ctx || !isPageVisible) return;
         if (!petals) petals = [];
         if (petals.length === 0) {
-          var count = Math.min(32, Math.floor(window.innerWidth / 30));
+          var count = window.innerWidth < 480 ? 16 : 24;
           for (var i = 0; i < count; i++) {
             var p = new Petal();
             p.y = Math.random() * canvas.height;
@@ -2384,6 +2522,10 @@
           }
         }
         function loop() {
+          if (!isPageVisible) {
+            animFrameId = null;
+            return;
+          }
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           for (var i = 0; i < petals.length; i++) {
             petals[i].update();
@@ -2391,8 +2533,24 @@
           }
           animFrameId = requestAnimationFrame(loop);
         }
-        if (!animFrameId) loop();
+        if (!animFrameId) animFrameId = requestAnimationFrame(loop);
       }
+
+      // Automatically pause animations when tab/screen is backgrounded to save mobile battery
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          isPageVisible = false;
+          if (animFrameId) {
+            cancelAnimationFrame(animFrameId);
+            animFrameId = null;
+          }
+        } else {
+          isPageVisible = true;
+          if (!animFrameId) {
+            startPetals();
+          }
+        }
+      }, { passive: true });
 
       /* -----------------------------------------
          Audio Player & Royal Envelope Gate
