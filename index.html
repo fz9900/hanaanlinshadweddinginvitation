@@ -923,11 +923,7 @@
     }
 
     .dancing-couple:hover {
-      transform: scale(1.05);
-    }
-
-    .dancing-couple.spinning {
-      animation: romanticSpin 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transform: scale(1.03);
     }
 
     @keyframes romanticWaltz {
@@ -947,20 +943,6 @@
 
       75% {
         transform: rotate(4deg) translateY(-5px);
-      }
-    }
-
-    @keyframes romanticSpin {
-      0% {
-        transform: scale(1) rotate(0deg);
-      }
-
-      40% {
-        transform: scale(1.1) rotate(180deg);
-      }
-
-      100% {
-        transform: scale(1) rotate(360deg);
       }
     }
 
@@ -1813,10 +1795,25 @@
         height: 24px;
       }
 
-      .co-tl { top: 8px; left: 8px; }
-      .co-tr { top: 8px; right: 8px; }
-      .co-bl { bottom: 8px; left: 8px; }
-      .co-br { bottom: 8px; right: 8px; }
+      .co-tl {
+        top: 8px;
+        left: 8px;
+      }
+
+      .co-tr {
+        top: 8px;
+        right: 8px;
+      }
+
+      .co-bl {
+        bottom: 8px;
+        left: 8px;
+      }
+
+      .co-br {
+        bottom: 8px;
+        right: 8px;
+      }
 
       .floral-accent {
         width: 70px;
@@ -2368,8 +2365,8 @@
           <b>S/o Mr. Hassan kutty kurikkal MP &amp; Mrs. Howlath KP</b>
           <div class="address-line">Karuvambram P.O, Manjeri</div>
         </div>
-
-        <p class="ish">‘In Sha Allah’</p>
+        <br>
+        <p class="ar" lang="ar">إن شاء الله</p>
       </div>
     </div>
   </section>
@@ -2467,8 +2464,7 @@
 
         <!-- Embedded Google Map -->
         <div class="venue-map-wrap">
-          <iframe
-            title="Majestic Ceremonials Convention Centre Google Maps"
+          <iframe title="Majestic Ceremonials Convention Centre Google Maps"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.8511655146067!2d76.0904647745788!3d10.433382989695263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7f331a376e4d5%3A0xa6fc2933b6bceb2c!2sMajestic%20Ceremonials%20Convention%20Centre!5e0!3m2!1sen!2sin!4v1793954498944!5m2!1sen!2sin"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -2950,18 +2946,12 @@
       var danceStage = q('dance-stage');
       var danceSvg = q('dancing-couple-svg');
       if (danceStage && danceSvg) {
-        var spinTimeout;
         var onDanceClick = function () {
-          danceSvg.classList.add('spinning');
           triggerConfetti();
           if (audio && audio.paused) {
             audio.play().catch(function () { });
           }
           showToast("Celebrating the love of Hanaan & Linshad! 💍✨");
-          clearTimeout(spinTimeout);
-          spinTimeout = setTimeout(function () {
-            danceSvg.classList.remove('spinning');
-          }, 1450);
         };
         danceStage.addEventListener('click', onDanceClick);
         danceStage.addEventListener('keydown', function (e) {
