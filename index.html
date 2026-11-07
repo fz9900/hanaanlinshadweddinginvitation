@@ -1689,111 +1689,430 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
+      body {
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
       section {
-        padding: 56px 16px;
+        padding: 46px 16px;
       }
 
       .wrap {
-        padding: 0 4px;
+        max-width: 460px;
+        padding: 0;
       }
 
-      .main-invitation-card {
-        padding: 46px 18px 38px;
-        border-radius: 28px;
-      }
-
-      .main-invitation-card::before {
-        inset: 8px;
-        border-radius: 20px;
-      }
-
-      .venue-card {
-        padding: 38px 18px 32px;
-        border-radius: 28px;
-      }
-
-      .venue-card::before {
-        inset: 8px;
-        border-radius: 20px;
-      }
-
-      .cal {
-        width: calc(100% - 16px);
-        padding: 24px 14px 20px;
-        border-radius: 24px;
-      }
-
-      .cd {
-        gap: 8px;
-        padding: 0 6px;
-      }
-
-      .cd-box {
-        padding: 12px 2px 10px;
-        border-radius: 16px;
-      }
-
-      .cd b {
-        font-size: clamp(20px, 6vw, 26px);
-      }
-
-      .slide {
-        flex: 0 0 min(82vw, 290px);
-        padding: 26px 18px;
+      /* Opening Gate / Wax Seal modal zoom out */
+      .gated .gate {
+        padding: 16px;
       }
 
       .gate-card {
-        padding: 38px 18px 32px;
-        border-radius: 28px;
+        max-width: 350px;
+        width: min(350px, 86vw);
+        padding: 26px 16px 22px;
+        border-radius: 24px;
       }
 
       .gate-card::before {
         inset: 6px;
+        border-radius: 18px;
+      }
+
+      .gate .lead {
+        font-size: 22px;
+      }
+
+      .gate h2 {
+        font-size: clamp(32px, 8vw, 44px);
+        margin: 4px 0 8px;
+      }
+
+      .gate-date {
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        margin-bottom: 18px;
+      }
+
+      .seal-icon-wrap {
+        width: 72px;
+        height: 72px;
+      }
+
+      .seal-icon {
+        width: 64px;
+        height: 64px;
+      }
+
+      .seal-monogram {
+        font-size: 19px;
+      }
+
+      .seal-text {
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+      }
+
+      .gate-card-crest svg {
+        width: 44px;
+        height: 20px;
+      }
+
+      /* Hero section zoom out */
+      .hero {
+        min-height: 90svh;
+        padding: 0 16px 36px;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 9vw, 62px);
+        line-height: 1.08;
+      }
+
+      .hero-tag {
+        font-size: 10.5px;
+        padding: 5px 13px;
+        letter-spacing: 0.2em;
+        margin-bottom: 8px;
+      }
+
+      .hero .d {
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        margin-top: 6px;
+      }
+
+      .hero .cue {
+        height: 32px;
+        margin: 18px auto 0;
+      }
+
+      .art {
+        background-position: 50% 16%;
+      }
+
+      .js .art {
+        transform: none;
+      }
+
+      /* Main Invitation Card */
+      .main-invitation-card {
+        padding: 34px 16px 28px;
+        border-radius: 24px;
+      }
+
+      .main-invitation-card::before {
+        inset: 6px;
+        border-radius: 18px;
+      }
+
+      .corner-ornament {
+        width: 24px;
+        height: 24px;
+      }
+
+      .co-tl { top: 8px; left: 8px; }
+      .co-tr { top: 8px; right: 8px; }
+      .co-bl { bottom: 8px; left: 8px; }
+      .co-br { bottom: 8px; right: 8px; }
+
+      .floral-accent {
+        width: 70px;
+        height: 18px;
+        margin-bottom: 10px;
+      }
+
+      .ar {
+        font-size: 26px;
+        line-height: 1.55;
+      }
+
+      .q {
+        font-size: 12.5px;
+        margin-top: 6px;
+      }
+
+      .ayat {
+        font-size: 14px;
+        line-height: 1.5;
+        padding: 10px 12px;
+        margin-top: 12px;
+        border-radius: 12px;
+      }
+
+      .blk {
+        margin-top: 20px;
+      }
+
+      .parents-role {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        margin-bottom: 4px;
+      }
+
+      .blk b {
+        font-size: 15px;
+        letter-spacing: 0.02em;
+      }
+
+      .address-line {
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .invite-prose {
+        font-size: 15.5px;
+        line-height: 1.5;
+        margin: 18px auto;
+      }
+
+      .couple-names-wrap {
+        margin: 18px 0;
+      }
+
+      .nm {
+        font-size: clamp(36px, 9vw, 52px);
+        line-height: 1.05;
+      }
+
+      .to {
+        font-size: 16px;
+        margin: 2px 0;
+      }
+
+      .to::before,
+      .to::after {
+        width: 24px;
+      }
+
+      .ish {
+        margin-top: 18px;
+        font-size: 18px;
+      }
+
+      /* Save the date & Calendar */
+      .section-subtitle {
+        font-size: 11px;
+        letter-spacing: 0.18em;
+      }
+
+      .section-title {
+        font-size: clamp(32px, 8vw, 46px);
+        margin-bottom: 6px;
+      }
+
+      .hint {
+        font-size: 12.5px;
+        margin: 4px 0 16px;
+      }
+
+      .cal {
+        width: min(330px, 88vw);
+        padding: 18px 14px 16px;
+        border-radius: 20px;
+        margin-top: 14px;
+      }
+
+      .cal .mo {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .grid i {
+        font-size: 11px;
+      }
+
+      .grid span {
+        font-size: 13.5px;
+        height: 32px;
+        line-height: 32px;
+      }
+
+      /* Countdown */
+      .cd {
+        gap: 6px;
+        padding: 0 8px;
+        max-width: 340px;
+        margin-top: 18px;
+      }
+
+      .cd-box {
+        padding: 8px 1px 7px;
+        border-radius: 12px;
+      }
+
+      .cd b {
+        font-size: clamp(18px, 5vw, 23px);
+      }
+
+      .cd span {
+        font-size: 9px;
+        letter-spacing: 0.08em;
+        margin-top: 2px;
+      }
+
+      .cdm {
+        font-size: 13px;
+        margin-top: 10px;
+      }
+
+      .cal-btn {
+        padding: 10px 24px;
+        font-size: 13px;
+      }
+
+      /* Slide Rail Carousel */
+      .rail {
+        gap: 10px;
+        padding: 8px 14px 18px;
+      }
+
+      .slide {
+        flex: 0 0 min(66vw, 235px);
+        padding: 18px 14px;
+        border-radius: 999px 999px 16px 16px;
+      }
+
+      .slide .p {
+        font-size: 11px;
+        letter-spacing: 0.16em;
+      }
+
+      .slide strong {
+        font-size: clamp(44px, 10vw, 60px);
+      }
+
+      .slide em {
+        font-size: 16px;
+      }
+
+      .slide .v {
+        font-size: clamp(20px, 5vw, 26px);
+      }
+
+      /* Venue */
+      .venue {
+        padding-top: 32px;
+      }
+
+      .venue-card {
+        padding: 30px 16px 24px;
         border-radius: 22px;
+      }
+
+      .venue-card::before {
+        inset: 6px;
+        border-radius: 16px;
+      }
+
+      .venue-map-wrap {
+        max-height: 200px;
+        border-radius: 14px;
+        margin: 16px auto 6px;
+      }
+
+      .venue address {
+        font-size: 13.5px;
+        line-height: 1.5;
+      }
+
+      .venue address b {
+        font-size: 15.5px;
       }
 
       .venue-actions {
         flex-direction: column;
         align-items: stretch;
-        padding: 0 10px;
+        gap: 8px;
+        margin-top: 18px;
+        padding: 0 6px;
       }
 
       .btn {
         justify-content: center;
-        padding: 14px 24px;
-        font-size: 15px;
+        padding: 11px 20px;
+        font-size: 13.5px;
+      }
+
+      /* Dancing Couple & Footer */
+      .dance-stage {
+        width: min(200px, 70vw);
+        height: 230px;
+        margin: 2px auto 8px;
+      }
+
+      .dancing-couple {
+        width: 175px;
+        height: 205px;
+      }
+
+      .dance-aura {
+        width: 175px;
+        height: 175px;
+      }
+
+      .dance-tap-hint {
+        font-size: 10px;
+        margin: 2px auto 16px;
       }
 
       footer {
-        margin: 0 16px;
-        padding: 44px 0 68px;
+        margin: 0 14px;
+        padding: 32px 0 48px;
+      }
+
+      .footer-happiness {
+        font-size: 17.5px;
+      }
+
+      footer b {
+        font-size: clamp(34px, 8.5vw, 48px);
+        margin-top: 4px;
+      }
+
+      .footer-tagline {
+        font-size: 11.5px;
       }
     }
 
     @media (max-width: 360px) {
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .gate-card {
+        padding: 20px 12px 18px;
+      }
+
+      .gate h2 {
+        font-size: 30px;
+      }
+
       .cd {
-        gap: 6px;
+        gap: 4px;
+        padding: 0 4px;
       }
 
       .cd-box {
-        padding: 10px 1px 8px;
+        padding: 7px 1px 5px;
       }
 
       .cd b {
-        font-size: 19px;
+        font-size: 16px;
       }
 
       .cd span {
-        font-size: 9.5px;
+        font-size: 8px;
       }
 
       .nm {
-        font-size: 42px;
+        font-size: 32px;
       }
 
       .ar {
-        font-size: 30px;
+        font-size: 22px;
       }
     }
 
